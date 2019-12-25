@@ -1,7 +1,9 @@
+var hatId = window.location.hash.substring(1) || prompt("Which hat?");
+
 var vueApp = new Vue({
 	el: '#app',
 	data: {
-	    hatId: null,
+	    hatId: hatId,
 	    localItems: [],
         newItemText: ""
 	},
@@ -46,7 +48,7 @@ var vueApp = new Vue({
         push: function(item) {
             console.log("push()");
             var that = this;
-            return $.post("ajax/push", item).then(function() {
+            return $.post("ajax/push", {hatId: this.hatId, displayText: item.displayText}).then(function() {
                 that.discard(item);
             }, function(reason) {
                 that.errorResponse(reason);
@@ -69,41 +71,3 @@ var vueApp = new Vue({
         }
 	}
 });
-
-function findJSONInResponse(response) {
-    try {
-        if(typeof response === 'string' || response instanceof String) {
-            return JSON.parse(response);
-        }
-        else if(response instanceof Object) {
-            if("responseJSON" in response) {
-                return response.responseJSON;
-            }
-            else if("responseText" in response) {
-                switch(response.status) {
-                    case 413:
-                        return {
-                            error: [
-                                "File upload or form data too large. Please try to upload a smaller file or submit the data in smaller chunks. "
-                                + "If this problem seems to occur with reasonably sized data, please report this incident to an administrator."
-                            ]
-                        };
-                    default:
-                        return JSON.parse(response.responseText);
-                }
-            }
-            else {
-                return response;
-            }
-        }
-        else {
-            return {};
-        }
-    } catch (e) {
-        return {
-            error: [
-                "Server encountered an unknown error or sent invalid response. Please report this incident to an administrator."
-            ]
-        }
-    }
-}

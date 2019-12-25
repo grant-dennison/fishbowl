@@ -33,9 +33,9 @@
         <div class="page-framed-content">
 
             <div class="padded">
-                <h2>Play the Game!</h2>
                 <div id="app">
-                    <div v-if="localItems.length === 0">No items out</div>
+                    <h2>This is <a v-bind:href="'#' + hatId">{{ hatId }}</a></h2>
+                    <div v-if="localItems.length === 0">No slips out</div>
                     <ul>
                         <li v-for="item in localItems">
                             {{ item.displayText }}

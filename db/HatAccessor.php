@@ -27,6 +27,9 @@ class HatAccessor {
         $this->logger = $logger;
         $this->conn = new DatabaseConnection($this->logger);
         $cleanHatUrlChunk = $this->conn->clean($hatUrlChunk);
+        if(empty($cleanHatUrlChunk)) {
+            throw new \Exception("Empty hat name is invalid");
+        }
         $hatResult = $this->conn->query("SELECT * FROM " . Hat::TABLE . " WHERE url_chunk = '$cleanHatUrlChunk';");
         if($hatResult->getNumRows() < 1) {
             $result = $this->conn->query("INSERT INTO " . Hat::TABLE . "(url_chunk) VALUES ('$cleanHatUrlChunk');");
