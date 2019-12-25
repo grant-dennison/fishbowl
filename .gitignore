@@ -1,0 +1,13 @@
+
+#Ignore thumbnails created by Windows
+Thumbs.db
+.idea/
+node_modules/
+vendor/
+*.iml
+
+/config.php
+.logger.log
+.php_errors.log
+
+composer.phar
