@@ -1,0 +1,24 @@
+{
+  "name": "jetbacker",
+  "version": "1.0.0",
+  "description": "pledge manager",
+  "private": true,
+  "dependencies": {
+    "codemirror": "^5.27.4",
+    "dropzone": "^5.1.1",
+    "jquery": "^3.2.1",
+    "noty": "^3.1.1",
+    "papaparse": "^4.3.3",
+    "tingle.js": "^0.13.2",
+    "vue": "^2.5.17",
+    "vuedraggable": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/TODO.git"
+  }
+}

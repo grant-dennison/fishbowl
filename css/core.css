@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+a.no-color {
+    color: inherit;
+}
+
+/*** Misc ***/
+.anchor {
+    display: block;
+    position: relative;
+    top: -80vh;
+    visibility: hidden;
+}
+
+.banner {
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.card {
+    float: left;
+    width: 25%;
+    height: 200px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.hide, .btn.hide {
+    display: none;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.larger {
+    font-size: larger;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
+.padded {
+    padding: 10px;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
+
+/* Invisible item retaining height (icons) */
+.spacer-height {
+    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    width: 0;
+}
+
+.small-thumbnail {
+    width: 32px;
+    height: 32px;
+}
+.standard-thumbnail {
+    width: 100px;
+    height: 100px;
+}
+.large-thumbnail {
+    width: 200px;
+    height: 200px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.va-middle {
+    vertical-align: middle;
+}
+
+.well {
+    padding: 20px;
+}
+
+.page-framed-content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:auto;
+}
+
+/*** Input Styling ***/
+input[readonly] {
+    opacity: .5;
+    /*background-color: lightgray;*/
+}
+input.integer {
+    width: 50px;
+    font-weight: bold;
+    font-size: inherit;
+    text-align: center;
+    background: none;
+    /* background-color: rgba(255, 255, 255, .5); */
+    /* border-radius: 2px; */
+    border: 2px dashed;
+    color: inherit;
+}
+
+/*** Button Properties ***/
+.btn, input[type='submit'] {
+    font-size: medium;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background-color: black;
+    /*margin: 2px;*/
+    border: none;
+    border-radius: 5px;
+    transition: background-color .5s, color .5s, box-shadow .5s;
+}
+.btn:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0px 10px 30px rgba(100, 100, 100, .5);
+}
+
+.btn.small {
+    font-size: small;
+    padding: 5px;
+}
+
+.btn-block {
+    display: block;
+    width: auto;
+}
+
+.btn-inactive {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.btn-inactive:hover {
+    /*    color: white;
+        background-color: MediumSeaGreen;*/
+}
+
+/** Tooltips */
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    /*    display: inline-block;*/
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+    visibility: hidden;
+    min-width: 200px;
+    width: 80%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.tooltip .tooltip-text.not-center {
+    left: 0;
+    top: 0;
+    transform: none;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+#SiteFooter {
+    padding-bottom: 50px;
+}
