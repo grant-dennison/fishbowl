@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Into the Hat</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
+
+    <!-- Note: the 'x' here is arbitrary -->
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/core.css" />
+
+    <link rel="stylesheet" type="text/css" href="/node_modules/noty/lib/noty.css" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/tingle.js/dist/tingle.min.css" />
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/405c88cf22.js"></script>
+
+    <!-- development version, includes helpful console warnings -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <!-- production version, optimized for size and speed -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+<body class="site-background">
+<div id="SiteContentFrame" class="tingle-content-wrapper">
+    <div class="neutral-background">
+        <div class="page-framed-content">
+
+            <div class="padded">
+                <h2>Play the Game!</h2>
+                <div id="app">
+                    <div v-if="localItems.length === 0">No items out</div>
+                    <ul>
+                        <li v-for="item in localItems">
+                            {{ item.displayText }}
+                            <a class="btn"
+                                v-on:click.left="push(item)"
+                            >
+                                <i class="fa fa-upload"></i>
+                            </a>
+                            <a class="btn"
+                                v-on:click.left="discard(item)"
+                            >
+                                <i class="fa fa-remove"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <input placeholder="Type new item here..." v-model="newItemText"/>
+                            <a class="btn"
+                               v-on:click.left="submitNew"
+                            >
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <svg width="200" height="200" style="fill:black;"
+                        v-on:click.left="pull"
+                    >
+                        <defs>
+                            <clipPath id="top-of-donut">
+                                <rect x="0" y="0" width="200" height="52" />
+                            </clipPath>
+                            <clipPath id="bottom-of-donut">
+                                <rect x="0" y="50" width="200" height="50" />
+                            </clipPath>
+                            <clipPath id="in-or-above-hat">
+                                <rect x="0" y="0" width="200" height="70" />
+                            </clipPath>
+                            <mask id="hole">
+                                <rect width="100%" height="100%" fill="white"/>
+                                <ellipse cx="100" cy="50" rx="42" ry="15"
+                                         style="fill:black" />
+                            </mask>
+                        </defs>
+
+                        <ellipse cx="100" cy="50" rx="80" ry="40"
+                                 mask="url(#hole)" clip-path="url(#top-of-donut)" />
+
+                        <ellipse cx="100" cy="150" rx="50" ry="25" />
+                        <path d="M 50 85
+      	v 65
+        a 80 40 0 0 1 100 0
+        v -65
+        a 80 40 0 0 1 -100 0
+        Z" />
+                        <ellipse cx="100" cy="50" rx="80" ry="40"
+                                 mask="url(#hole)" clip-path="url(#bottom-of-donut)" />
+
+                        Sorry, your browser does not support inline SVG.
+                    </svg>
+
+                </div>
+                <script src="main.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+<div id="SiteFooter">
+    <div class="padded content-frame">
+        <div class="text-center">
+            Questions? <a href="mailto:grant.dennison@gmail.com">Contact us</a>.
+        </div>
+        <div class="text-center">
+            <small>powered by <a href="/">Software Engineering</a></small>
+        </div>
+    </div>
+    <div class="clear-fix"></div>
+    <div class="text-center">
+        <small>&copy; 2019 Grant. All Rights Reserved. </small>
+    </div>
+</div>
+</body>
+</html>
