@@ -1,0 +1,23 @@
+CREATE TABLE hat (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(64) NOT NULL,
+    url_chunk VARCHAR(64) NOT NULL,
+    start_time DATETIME,
+    allow_push BOOLEAN NOT NULL DEFAULT true,
+    allow_pull BOOLEAN NOT NULL DEFAULT true,
+    PRIMARY KEY(id),
+    UNIQUE KEY(url_chunk)
+) ENGINE = INNODB;
+
+CREATE TABLE slip_of_paper (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    hat_id BIGINT UNSIGNED,
+    display_text VARCHAR(256) NOT NULL,
+    time_entered DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id),
+    FOREIGN KEY(hat_id)
+        REFERENCES hat(id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+
+) ENGINE = INNODB DEFAULT CHARSET = utf8mb4;
